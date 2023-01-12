@@ -1,23 +1,43 @@
-import logo from './logo.svg';
 import './App.css';
+import Boton from './components/Boton';
+import Counter from './components/Counter';
+import {useState} from "react"
+
+
 
 function App() {
+  /* Estados */
+  const [number,setNumber]=useState(0)
+  
+  const addNumber=()=>{
+    setNumber(number+1)
+  }
+
+  const restart=()=>{
+    setNumber(0)
+  }
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="counter-container">
+
+      <Counter number={number}></Counter>
+
+      <Boton
+      text="Add Number"
+      isBtnClick={true}
+      addNumber={addNumber}
+      />
+
+      <Boton
+      text="Reset"
+      isBtnClick={false}
+      addNumber={restart}
+      />
+
+    
+      </div>   
     </div>
   );
 }
